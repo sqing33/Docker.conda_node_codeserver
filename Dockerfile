@@ -20,9 +20,8 @@ RUN mkdir -p /app/conda_envs && \
 
 # 安装 pnpm ，设置镜像源，将 pnpm 缓存位置设置为/app/pnpm_store
 RUN npm install -g pnpm && \
-    apt-get purge -y npm && \
-    mkdir -p /app/Code/pnpm_store && \
-    pnpm config set store-dir /app/Code/pnpm_store && \
+    mkdir -p /app/pnpm_store && \
+    pnpm config set store-dir /app/pnpm_store && \
     npm config set registry https://mirrors.huaweicloud.com/repository/npm/ && \
     pnpm config set registry https://mirrors.huaweicloud.com/repository/npm/
 
