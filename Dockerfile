@@ -5,8 +5,9 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
     curl \
-    nodejs \
-    npm \
+    # 使用 NodeSource 官方脚本来添加 Node.js v20 的软件源安装 nodejs
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 # 设置 Conda 环境和 pip 镜像源，将 conda 环境和依赖安装位置设置为 /app/conda_envs
